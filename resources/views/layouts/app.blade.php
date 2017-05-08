@@ -23,7 +23,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-default navbar-static-top" id="navbar">
             <div class="container">
                 <div class="navbar-header">
 
@@ -51,6 +51,13 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::check() || Auth::guard('admin')->check())
+                            @if (Auth::check())
+                                <add-request-btn inline-template>
+                                        <li style="padding:10px 0px 10px 0">
+                                            <button href="#" class="btn __button-red __button" @click="launchForm">Add Request</button>
+                                        </li>
+                                </add-request-btn>
+                            @endif
                             <li class="dropdown">
                                 @if (Auth::check())
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -61,7 +68,7 @@
                                     {{ Auth::guard('admin')->user()->name }} <span class="caret"></span>
                                 </a>
                                 @endif
-
+                            
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
                                         <a href="{{ route('logout') }}"
@@ -80,7 +87,7 @@
                                     @endif
                                     </li>
                                 </ul>
-                            </li> 
+                            </li>
                         @else
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>

@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    <login-form></login-form>
+    <admin-login-form></admin-login-form>
 @endsection

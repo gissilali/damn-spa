@@ -8,7 +8,7 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
-
+window.Event = new Vue();
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -16,9 +16,22 @@ window.Vue = require('vue');
  */
 
 Vue.component('example', require('./components/Example.vue'));
-Vue.component('login-form', require('./components/auth/Login.vue'));
-
-
+Vue.component('admin-login-form', require('./components/auth/AdminLogin.vue'));
+Vue.component('user-login-form', require('./components/auth/UserLogin.vue'));
+Vue.component('add-request-btn', {
+	data(){
+		return {
+			
+		}
+	},
+	methods:{
+		launchForm (){
+			Event.$emit('add-request');
+		}
+	}
+});
+Vue.component('add-request-form', require('./components/app/AddRequestForm.vue'));
+Vue.component('blood-group-input', require('./components/app/partials/BloodGroupInput'));
 const app = new Vue({
     el: '#app'
 });

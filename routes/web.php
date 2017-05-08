@@ -42,3 +42,12 @@ Route::group(['prefix' => 'admin/'], function(){
         return view('admin.home');
     });
 });
+
+/**
+ * 
+ */
+Route::get('get-bloodgroups', 'Blood\BloodGroupController@getBloodGroups');
+/**
+ * Doc routes
+ */
+Route::post('/register-donor', 'Donor\DonorController@registerDonor');
